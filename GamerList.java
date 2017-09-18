@@ -42,13 +42,15 @@ public class GamerList
         }
         else 
         {
-            Node beforeNode = list;
-            while(beforeNode.score > node.score && beforeNode.next != null) 
+            Node current = list;
+            Node prev = list;
+            while(current.score > node.score && current.next != null) 
             {
-                beforeNode = beforeNode.next;
+                prev = current;
+                current = current.next;
             }
-            node.next = beforeNode.next;
-            beforeNode.next = node;
+            node.next = prev.next;
+            prev.next = node;
         }
         if(size() > 10) 
         {
